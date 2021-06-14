@@ -54,8 +54,12 @@ button {
             <input type="password" placeholder="Enter Password" name="password" required>  
             <button type="submit">Login</button>   
             <input type="checkbox" checked="checked"> Remember me   
-            <button type="button" class="cancelbtn"> Cancel</button>   
-            New <a href="#"> User? </a>   
+            <button type="button" class="cancelbtn"> Cancel</button>    
+            <input
+    			id="submitNewUser"
+    			type="submit"
+    			value="Create New User"
+    			onclick="createNewUser()">   
         </div>   
     </form>     
 </body>     

@@ -11,7 +11,7 @@ Body {
 button {   
        background-color: #4CAF50;   
        width: 100%;  
-        color: orange;   
+        color: red;   
         padding: 15px;   
         margin: 10px 0px;   
         border: none;   
@@ -25,7 +25,7 @@ button {
         margin: 8px 0;  
         padding: 12px 20px;   
         display: inline-block;   
-        border: 2px solid green;   
+        border: 2px solid red;   
         box-sizing: border-box;   
     }  
  button:hover {   
@@ -55,7 +55,7 @@ button {
             <button type="submit">Login</button>   
             <input type="checkbox" checked="checked"> Remember me   
             <button type="button" class="cancelbtn"> Cancel</button>   
-            Forgot <a href="#"> password? </a>   
+            New <a href="#"> User? </a>   
         </div>   
     </form>     
 </body>     

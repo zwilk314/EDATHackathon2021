@@ -2,6 +2,9 @@
 <html>   
 <head>  
 <meta name="viewport" content="width=device-width, initial-scale=1">  
+<script type='text/javascript' src='https://npmcdn.com/parse@2.1.0/dist/parse.min.js'></script>
+<script src='../frame/database.js'></script>
+<script src="newUser.js"></script>
 <title> Login Page </title>  
 <style>   
 Body {  
@@ -46,21 +49,20 @@ button {
 </head>    
 <body>    
     <center> <h1> Groups Login </h1> </center>   
-    <form>  
-        <div class="container">   
-            <label>Username : </label>   
-            <input type="text" placeholder="Enter Username" name="username" required>  
-            <label>Password : </label>   
-            <input type="password" placeholder="Enter Password" name="password" required>  
-            <button type="submit">Login</button>   
-            <input type="checkbox" checked="checked"> Remember me   
-              
-            <input
-    			id="submitNewUser"
-    			type="submit"
-    			value="Create New User"
-    			onclick="createNewUser()">   
-        </div>   
-    </form>     
+	<div class="container">   
+		<label>Username : </label>   
+		<input id="username" type="text" placeholder="Enter Username" name="username" required>  
+		<label>Password : </label>   
+		<input id="password" type="password" placeholder="Enter Password" name="password" required>  
+		<button type="submit" onclick="loginUser(document.getElementById('username').value, document.getElementById('password').value)">Login</button>   
+		<!--<input type="checkbox" checked="checked"> Remember me-->   
+	  
+		<input
+			id="submitNewUser"
+			type="submit"
+			value="Create New User"
+			onclick="createNewUser()">   
+	</div> 
+  
 </body>     
 </html> 

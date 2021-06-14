@@ -1,3 +1,7 @@
+//To use these functions, include the following in your html file header:
+//	<script type='text/javascript' src='https://npmcdn.com/parse@2.1.0/dist/parse.min.js'></script>
+// <script scr='database.js'></script>
+
 var applicationID = "Bm7ROpC6yNg64Kc2n9CovsUEHfhr0UW9tAw2RCJw"
 var javascriptKey = "JIMPkxp1LnuZytN4t9DtZkQ4TFmlshEO2eiMHY85"
 var serverID = "https://parseapi.back4app.com"
@@ -45,3 +49,5 @@ function loginUser(username, password){
 		}
 	})
 }
+
+function 

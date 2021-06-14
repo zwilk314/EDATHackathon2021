@@ -7,6 +7,8 @@
 // 	}
 // }
 
+const fs = require("fs")
+
 function createNewGroup(){
 	var name = document.getElementById("newGroupName").value
 	var desc = document.getElementById("newGroupDesc").value

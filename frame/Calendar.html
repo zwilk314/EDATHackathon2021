@@ -6,7 +6,6 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<!-- Optional JavaScript -->
-		<script src="zipcode.js?rev=1"></script>
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -43,9 +42,9 @@
 			<div class="row justify-content-center">
 				<div class="col-sm-10 box" align="center">
 					<table class='table loadTable'>
-						<thead><tr><th>Event</th><th>Description</th><th>Date</th><th>Group</th><th>Location</th></tr></thead>
+						<thead><tr><th onclick="sortTable(0)">Event</th><th onclick="sortTable(1)">Description</th><th>Date</th><th>Time</th><th>Group</th><th>Location</th></tr></thead>
 						<tbody id="data">
-							<tr><td>Intern Game Day</td><td>Join the interns in a day of gaming</td><td>6/22/2021</td><td>IDS Interns</td><td>Microsoft Teams</td></tr></thead>
+							<tr><td>Intern Game Day</td><td>Join the interns in a day of gaming</td><td>6/22/2021</td><td>10:30 AM</td><td>IDS Interns</td><td>Microsoft Teams</td></tr></thead>
 						</tbody>
 					</table>
 				</div>

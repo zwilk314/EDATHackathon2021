@@ -184,3 +184,37 @@ function addNewMeeting(groupName, meetingInfoString){
 		}
 	})
 }
+
+//Carson method for populating calendar
+function popCal(){
+	Parse.initialize(applicationID, javascriptKey)
+	Parse.serverURL = serverID
+	var query = new Parse.Query(Parse.Object.extend("GroupInfo"))
+	var events = new Object();
+	query.find().then(function(results){
+		for(i=0; i<results.length; i++){
+			result = results[i]
+			events[i] = result.get("Meetings");
+			//console.log(events[i]);
+			console.log(typeof events[i])
+			var info = events[i].split("|");
+			console.log(info);
+				$('#data').append(
+					'<tr><td>'
+					+ info[0]
+					+ '</td><td>'
+					+ info[1]
+					+ '</td><td>'
+					+ info[2]
+					+ '</td><td>'
+					+ info[3]
+					+ '</td><td> test </td><td>'
+					+ info[4]
+					+ '</td></tr>'
+			
+				)
+			
+
+		}
+	})
+}

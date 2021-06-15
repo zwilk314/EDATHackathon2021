@@ -42,6 +42,7 @@ function addNewUser(username, password){
 			newEntry.save().then(
 				function(result){
 					alert("Added " + result.get("username") + " successfully.")
+					window.open("../login/login.html", "_self")
 				}
 			).catch(function(error){
 				alert(error)
@@ -65,10 +66,9 @@ function loginUser(username, password){
 		}
 		else{
 			alert("Successful login " + result[0].get("username"))
-			//window.open("???")
-			//TODO: navigate to home page
-			//sessionStorage.setItem("username", result.get("username"))
-			//sessionStorage.setItem("Groups", result.get("Groups"))
+			sessionStorage.setItem("username", username)
+			sessionStorage.setItem("groups", result[0].get("Groups"))
+			window.open("../frame/groups.html", "_self")
 		}
 	})
 }
@@ -143,7 +143,7 @@ function queryAllGroups(){
 	Parse.serverURL = serverID
 	var query = new Parse.Query(Parse.Object.extend("GroupInfo"))
 	query.find().then(function(results){
-		autofillLibrary = []
+		var autofillLibrary = []
 		for(i=0; i<results.length; i++){
 			result = results[i]
 			autofillLibrary.push(result.get("Name"))

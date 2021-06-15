@@ -50,15 +50,14 @@ Body {
 			id="Login"
 			type="submit"
 			value="Login"
-			onclick="loginUser(document.getElementById('username').value, document.getElementById('password').value)"> 
-    	    window.open('../groups.html') 
+			onclick="loginUser(document.getElementById('username').value, document.getElementById('password').value)">
 		<!--<input type="checkbox" checked="checked"> Remember me-->   
 	  
 		<input
 			id="submitNewUser"
 			type="submit"
 			value="Create New User"
-			onclick="createNewUser()">   
+			onclick="window.open('../login/createUserPage.html', '_self')">   
 	</div> 
   
 </body>     

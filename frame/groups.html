@@ -16,24 +16,24 @@
 	</head>
 	
 	<body>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-			<a class="navbar-brand" href="#667189" >Navbar Frame</a>
+		<nav class="navbar navbar-expand-lg" style="background-color: #ae0700;">
+			<a class="navbar-brand" style="color: #ffffff;" href="#">Lilly Groups </a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			
 			<div class="collapse navbar-collapse" id="navbarNav">
 				<ul class="navbar-nav">
+					<li class="nav-item">
+						<a class="nav-link" style="color: #ffffff;"  href="groups.html"> Groups </a>
+					</li>
+					
 					<li class="nav-item active">
-						<a class="nav-link" href="groups.html"> Groups <span class="sr-only">(current)</span></a>
+						<a class="nav-link" style="color: #ffffff;" href="Calendar.html"> Calendar <span class="sr-only">(current)</span></a>
 					</li>
 					
 					<li class="nav-item">
-						<a class="nav-link" href="Calendar.html"> Calendar </a>
-					</li>
-					
-					<li class="nav-item">
-						<a class="nav-link" href="../login/login.html"> Logout </a>
+						<a class="nav-link" style="color: #ffffff;" href="../login/login.html"> Logout </a>
 					</li>
 				</ul>
 			</div>
@@ -44,41 +44,21 @@
 			name="groupSearch"
 			placeholder="Search Groups">
 		<input
-			id="exploreGroup"
+			id="search"
 			type="submit"
-			name="exploreGroup"
-			value="Explore Group"
-			onclick="exploreGroup(document.getElementById('groupSearch').value)">
+			name="search"
+			value="Search"
+			onclick="queryGroup(document.getElementById('groupSearch').value)">
 		<br>
 		<input
 			id="createNewGroup"
 			type="submit"
 			name="createNewGroup"
 			value="Create New Group"
-			onclick="document.getElementById('newGroupModal').style.display = 'block'">
+			onclick="newGroupDialog()">
 		<div
-			id="newGroupModal"
+			id="modal"
 			style="display:none">
-			<span
-				class="close"
-				onclick="document.getElementById('newGroupModal').style.display = 'none'">
-				&times;
-			</span>
-    		<input
-    			id="newGroupName"
-    			type="text"
-    			name="newGroupName"
-    			placeholder="New Group Name">
-    		<input
-    			id="newGroupDesc"
-    			type="text"
-    			name="newGroupDesc"
-    			placeholder="Short Description of Group">
-    		<input
-    			id="submitNewGroup"
-    			type="submit"
-    			value="Create New Group"
-    			onclick="createNewGroup()">
 		</div>
 	</body>
 </html>

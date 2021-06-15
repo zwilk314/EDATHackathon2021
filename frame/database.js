@@ -131,8 +131,42 @@ function queryGroup(groupName){
 			return
 		}
 		else{
-			sessionStorage.setItem("Meetings", result[0].get("Meetings"))
-			//NOTE this may need editing to avoid race conditions and scenarios with multiple groups
+			document.getElementById("modal").innerHTML = '\
+				<span\
+					class="close"\
+					onclick="document.getElementById(\'modal\').style.display = \'none\'">\
+					&times;\
+				</span>\
+				<h1>' + result[0].get("Name") + '\
+				</h1>\
+				<br>\
+				<p>' + result[0].get("Description") + '\
+				<br>\
+				<table class="table loadTable">\
+					<thead><tr><th onclick="sortTable(0)">Event</th><th onclick="sortTable(1)">Description</th><th>Date</th><th>Time</th><th>Location</th></tr></thead>\
+					<tbody id="dataTable">\
+					</tbody>\
+				</table>\
+			'
+			eventsList = result[0].get("Meetings").split(",")
+			for(i=0; i<eventsList.length; i++){
+				temp = eventsList[i].split(" | ")
+				$('#dataTable').append(
+					'<tr><td>'
+					+ temp[0]
+					+ '</td><td>'
+					+ temp[1]
+					+ '</td><td>'
+					+ temp[2]
+					+ '</td><td>'
+					+ temp[3]
+					+ '</td><td>'
+					+ temp[4]
+					+ '</td></tr>'
+			
+				)
+			}
+			document.getElementById("modal").style.display = "block"
 		}
 	})
 }

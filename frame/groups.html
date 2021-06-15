@@ -44,41 +44,21 @@
 			name="groupSearch"
 			placeholder="Search Groups">
 		<input
-			id="exploreGroup"
+			id="search"
 			type="submit"
-			name="exploreGroup"
-			value="Explore Group"
-			onclick="exploreGroup(document.getElementById('groupSearch').value)">
+			name="search"
+			value="Search"
+			onclick="queryGroup(document.getElementById('groupSearch').value)">
 		<br>
 		<input
 			id="createNewGroup"
 			type="submit"
 			name="createNewGroup"
 			value="Create New Group"
-			onclick="document.getElementById('newGroupModal').style.display = 'block'">
+			onclick="newGroupDialog()">
 		<div
-			id="newGroupModal"
+			id="modal"
 			style="display:none">
-			<span
-				class="close"
-				onclick="document.getElementById('newGroupModal').style.display = 'none'">
-				&times;
-			</span>
-    		<input
-    			id="newGroupName"
-    			type="text"
-    			name="newGroupName"
-    			placeholder="New Group Name">
-    		<input
-    			id="newGroupDesc"
-    			type="text"
-    			name="newGroupDesc"
-    			placeholder="Short Description of Group">
-    		<input
-    			id="submitNewGroup"
-    			type="submit"
-    			value="Create New Group"
-    			onclick="createNewGroup()">
 		</div>
 	</body>
 </html>

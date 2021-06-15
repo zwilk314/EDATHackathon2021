@@ -5,6 +5,7 @@
 		<title> EDAT Hackathon Frame </title>
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
@@ -35,6 +36,10 @@
   		border-bottom: 2px solid red;
 		}
 		
+		body {
+            font-family: 'Montserrat', sans-serif;
+            background: #C5C7C4;
+        }
 		
 	</style>
 
@@ -63,26 +68,32 @@
 				</ul>
 			</div>
 		</nav>
-		<input
-			id="groupSearch"
-			type="text"
-			name="groupSearch"
-			placeholder="Search Groups"
-			>
-		<input
-			id="search"
-			type="submit"
-			name="search"
-			value="Search"
-			style= "color: #ffffff;"
-			onclick="queryGroup(document.getElementById('groupSearch').value)">
+		<br><br>
+		<div style="width:25%; margin:auto">
+			<input
+				id="groupSearch"
+				type="text"
+				name="groupSearch"
+				placeholder="Search Groups"
+				style="width:65%">
+			<input
+				id="search"
+				type="submit"
+				name="search"
+				value="Search"
+				style= "color: #ffffff; width:30%"
+				onclick="queryGroup(document.getElementById('groupSearch').value)">
+		</div>
 		<br>
-		<input
-			id="createNewGroup"
-			type="submit"
-			name="createNewGroup"
-			value="Create New Group"
-			onclick="newGroupDialog()">
+		<div style="width:25%; margin:auto">
+			<input
+				id="createNewGroup"
+				type="submit"
+				name="createNewGroup"
+				value="Create New Group"
+				style="text-align:center; width:100%"
+				onclick="newGroupDialog()">
+		</div>
 		<div
 			id="modal"
 			style="display:none">

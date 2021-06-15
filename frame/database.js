@@ -176,6 +176,8 @@ function queryGroup(groupName){
 						<tbody id="dataTable">\
 						</tbody>\
 					</table>\
+					<br>\
+					<br>\
 					<p id="recommendation"></p>\
 				'
 				eventsList = result[0].get("Meetings").split(",")
@@ -217,6 +219,8 @@ function queryGroup(groupName){
 						</tbody>\
 					</table>\
 					<input type="submit" value="Join Group" onclick="joinGroup(localStorage.getItem(\'username\'),\'' + result[0].get("Name") + '\')">\
+					<br>\
+					<br>\
 					<br>\
 					<p id="recommendation"></p>\
 				'
@@ -273,7 +277,7 @@ function recommend(){
 				maxValue = library[namesList[j]]
 			}
 		}
-		document.getElementById("recommendation").innerHTML = "You might also be interested in joining " + maximum + " - check it out!"
+		document.getElementById("recommendation").innerHTML = "Many people are interested in <b><em>" + maximum + "</b></em> - check it out!"
 	})
 }
 

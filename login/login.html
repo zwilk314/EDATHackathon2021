@@ -1,153 +1,155 @@
-<!DOCTYPE html>   
-<html>   
-<head>  
-<meta name="viewport" content="width=device-width, initial-scale=1">  
-<script type='text/javascript' src='https://npmcdn.com/parse@2.1.0/dist/parse.min.js'></script>
-<script src='../frame/database.js'></script>
-<script src="newUser.js"></script>
-<title> Login Page </title>  
-<div class="ripple-background">
-</div>
-<div class="circle xxlarge shade1">
-</div>
-<div class="circle xlarge shade2">
-</div>
-<div class="circle large shade3">
-</div>
-<div class="circle mediun shade4">
-</div>
-<div class="circle small shade5">
-</div>
-<style>   
-body{
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <script type='text/javascript' src='https://npmcdn.com/parse@2.1.0/dist/parse.min.js'></script>
+    <script src='../frame/database.js'></script>
+    <script src="newUser.js"></script>
+    <title> Login Page </title>
+    <div class="ripple-background">
+    </div>
+    <div class="circle xxlarge shade1">
+    </div>
+    <div class="circle xlarge shade2">
+    </div>
+    <div class="circle large shade3">
+    </div>
+    <div class="circle mediun shade4">
+    </div>
+    <div class="circle small shade5">
+    </div>
+    <style>
+        body {
             font-family: 'Montserrat', sans-serif;
-        background: #C5C7C4;
-}
-
-
-.circle{
-  position: absolute;
-  border-radius: 50%;
-  background: white;
-  animation: ripple 15s infinite;
-  box-shadow: 0px 0px 1px 0px #508fb9;
-}
-
-.small{
-  width: 200px;
-  height: 200px;
-  left: -100px;
-  bottom: -100px;
-}
-
-.medium{
-  width: 400px;
-  height: 400px;
-  left: -200px;
-  bottom: -200px;
-}
-
-.large{
-  width: 600px;
-  height: 600px;
-  left: -300px;
-  bottom: -300px;
-}
-
-.xlarge{
-  width: 800px;
-  height: 800px;
-  left: -400px;
-  bottom: -400px;
-}
-
-.xxlarge{
-  width: 1000px;
-  height: 1000px;
-  left: -500px;
-  bottom: -500px;
-}
-
-.shade1{
-  opacity: 0.2;
-}
-.shade2{
-  opacity: 0.5;
-}
-
-.shade3{
-  opacity: 0.7;
-}
-
-.shade4{
-  opacity: 0.8;
-}
-
-.shade5{
-  opacity: 0.9;
-}
-
-@keyframes ripple{
-  0%{
-    transform: scale(0.8);
-  }
-  
-  50%{
-    transform: scale(1.2);
-  }
-  
-  100%{
-    transform: scale(0.8);
-  }
-}
-
- form {   
-        border: 3px solid #f1f1f1;   
-    }   
- input[type=text], input[type=password] {   
-        width: 100%;   
-        margin: 8px 0;  
-        padding: 12px 20px;   
-        display: inline-block;   
-        border: 2px solid red;   
-        box-sizing: border-box;   
-    }  
- button:hover {   
-        opacity: 0.7;   
-    }   
-  .cancelbtn {   
-        width: auto;   
-        padding: 10px 18px;  
-        margin: 10px 5px;  
-    }   
+            background: #C5C7C4;
+        }
         
-     
- .container {   
-        padding: 25px;   
-        background-color: lightblue;  
-    }   
-</style>   
-</head>    
-<body>    
-    <right>    <p style="font-family: Montserrat" size="18px" color="#667189" </p> <h1>  Welcome to Lilly Groups </h1> </right>   
-	<div class="container">   
-		<label>Username : </label>   
-		<input id="username" type="text" placeholder="Enter Username" name="username" required>  
-		<label>Password : </label>   
-		<input id="password" type="password" placeholder="Enter Password" name="password" required>  
-        <input
-			id="Login"
-			type="submit"
-			value="Login"
-			onclick="loginUser(document.getElementById('username').value, document.getElementById('password').value)">
-		<!--<input type="checkbox" checked="checked"> Remember me-->   
-	  
-		<input
-			id="submitNewUser"
-			type="submit"
-			value="Create New User"
-			onclick="window.open('../login/createUserPage.html', '_self')">   
-	</div> 
-  
-</body>     
-</html> 
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            background: white;
+            animation: ripple 15s infinite;
+            box-shadow: 0px 0px 1px 0px #508fb9;
+        }
+        
+        .small {
+            width: 200px;
+            height: 200px;
+            left: -100px;
+            bottom: -100px;
+        }
+        
+        .medium {
+            width: 400px;
+            height: 400px;
+            left: -200px;
+            bottom: -200px;
+        }
+        
+        .large {
+            width: 600px;
+            height: 600px;
+            left: -300px;
+            bottom: -300px;
+        }
+        
+        .xlarge {
+            width: 800px;
+            height: 800px;
+            left: -400px;
+            bottom: -400px;
+        }
+        
+        .xxlarge {
+            width: 1000px;
+            height: 1000px;
+            left: -500px;
+            bottom: -500px;
+        }
+        
+        .shade1 {
+            opacity: 0.2;
+        }
+        
+        .shade2 {
+            opacity: 0.5;
+        }
+        
+        .shade3 {
+            opacity: 0.7;
+        }
+        
+        .shade4 {
+            opacity: 0.8;
+        }
+        
+        .shade5 {
+            opacity: 0.9;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0.8);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(0.8);
+            }
+        }
+        
+        form {
+            border: 3px solid #f1f1f1;
+        }
+        
+        input[type=text],
+        input[type=password] {
+            width: 100%;
+            margin: 8px 0;
+            padding: 12px 20px;
+            display: inline-block;
+            border: 2px solid red;
+            box-sizing: border-box;
+        }
+        
+        button:hover {
+            opacity: 0.7;
+        }
+        
+        .cancelbtn {
+            width: auto;
+            padding: 10px 18px;
+            margin: 10px 5px;
+        }
+        
+        .container {
+            padding: 25px;
+            background-color: lightblue;
+            margin: auto;
+            width: 60%;
+        }
+    </style>
+</head>
+
+<body>
+    <right>
+        <p style="font-family: Montserrat" size="18px" color="#667189" </p>
+            <h1> Welcome to Lilly Groups </h1>
+    </right>
+    <div class="container">
+        <label>Username : </label>
+        <input id="username" type="text" placeholder="Enter Username" name="username" required>
+        <label>Password : </label>
+        <input id="password" type="password" placeholder="Enter Password" name="password" required>
+        <input id="Login" type="submit" value="Login" onclick="loginUser(document.getElementById('username').value, document.getElementById('password').value)">
+        <!--<input type="checkbox" checked="checked"> Remember me-->
+
+        <input id="submitNewUser" type="submit" value="Create New User" onclick="window.open('../login/createUserPage.html', '_self')">
+    </div>
+
+</body>
+
+</html>

@@ -324,26 +324,68 @@ function popCal(){
 		for(i=0; i<results.length; i++){
 			result = results[i]
 			events[i] = result.get("Meetings");
-			//console.log(events[i]);
-			console.log(typeof events[i])
-			var info = events[i].split("|");
-			console.log(info);
-				$('#data').append(
-					'<tr><td>'
-					+ info[0]
-					+ '</td><td>'
-					+ info[1]
-					+ '</td><td>'
-					+ info[2]
-					+ '</td><td>'
-					+ info[3]
-					+ '</td><td> test </td><td>'
-					+ info[4]
-					+ '</td></tr>'
-			
-				)
-			
+			var eves = events[i].split(",");
+			for(j=0; j<eves.length; j++){
+				var info = eves[j].split("|");
+				
+				let card = document.createElement("div");
+                card.classList.add("card");
+				
 
+				var br = document.createElement("br");
+				var br2 = document.createElement("br");
+				var br3 = document.createElement("br");
+				var br4 = document.createElement("br");
+				let text = document.createTextNode("Event: " + info[0]);
+				let text2 = document.createTextNode("Description: " + info[1]);
+				let text3 = document.createTextNode("Date: " + info[2]);
+				let text4 = document.createTextNode("Group: " + result.get("Name"));
+				let text5 = document.createTextNode("Location: " + info[4]);
+				card.appendChild(text);
+				card.appendChild(br);
+				card.appendChild(text2);
+				card.appendChild(br2);
+				card.appendChild(text3);
+				card.appendChild(br3);
+				card.appendChild(text4);
+				card.appendChild(br4);
+				card.appendChild(text5);
+				$('#cards').append(card);
+			}			
 		}
 	})
+}
+//Carson function to add event from the form
+function addEvent() {
+	var eventName = $("input#event").val();
+	var eventDesc = $("textarea#description").val();
+	var groupName = $("input#group").val();
+	var time = Date.parse($("input#tim").val());
+	var date = new Date(time);
+	var loc = $("input#location").val();
+	var hours = date.getHours();
+    var minutes = date.getMinutes();
+                
+    // Check whether AM or PM
+    var newformat = hours >= 12 ? 'PM' : 'AM'; 
+                
+     // Find current hour in AM-PM Format
+    hours = hours % 12; 
+                
+    // To display "0" as "12"
+    hours = hours ? hours : 12; 
+    minutes = minutes < 10 ? '0' + minutes : minutes; 
+    var month = date.getUTCMonth() + 1; //months from 1-12
+	var day = date.getUTCDate();
+	var year = date.getUTCFullYear();
+
+	var dat = year + "/" + month + "/" + day;
+	var tim = hours + ':' + minutes + ' ' + newformat;
+	
+	if (eventName == "" || eventDesc == "" || groupName == "" || dat == "" || tim == "" || loc == "") {
+		alert("One or more fields are blank");
+	} else {
+		var eventString = eventName + " | " + eventDesc + " | " + dat + " | " + tim + " | " + loc;
+		addNewMeeting(groupName, eventString)
+	}
 }

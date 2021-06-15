@@ -122,6 +122,31 @@ function addNewGroup(username, groupName, groupDescription){
 	}
 }
 
+function joinGroup(username, groupName){
+	Parse.initialize(applicationID, javascriptKey)
+	Parse.serverURL = serverID
+	var query = new Parse.Query(Parse.Object.extend("customUser"))
+	query.equalTo("username", username)
+	query.find().then(function(result){
+		var oldList = result[0].get("Groups")
+		var id = result[0].id
+		nImport2 = Parse.Object.extend("customUser")
+		newEntry2 = new nImport2()
+		newEntry2.set("objectId", id)
+		if(oldList == ""){
+			var newList = groupName
+		}
+		else{
+			var newList = oldList + "," + groupName
+		}
+		newEntry2.set("Groups", newList)
+		newEntry2.save().then(function(result3){
+			alert("Successfully Joined Group")
+			localStorage.setItem("groups", newList)
+		})
+	})
+}
+
 //Finds the meetings for a given group name and adds them to session storage
 function queryGroup(groupName){
 	Parse.initialize(applicationID, javascriptKey)
@@ -134,44 +159,88 @@ function queryGroup(groupName){
 			return
 		}
 		else{
-			document.getElementById("modal").innerHTML = '\
-				<span\
-					class="close"\
-					onclick="document.getElementById(\'modal\').style.display = \'none\'">\
-					&times;\
-				</span>\
-				<h1>' + result[0].get("Name") + '\
-				</h1>\
-				<br>\
-				<p>' + result[0].get("Description") + '\
-				<br>\
-				<table class="table loadTable">\
-					<thead><tr><th onclick="sortTable(0)">Event</th><th onclick="sortTable(1)">Description</th><th>Date</th><th>Time</th><th>Location</th></tr></thead>\
-					<tbody id="dataTable">\
-					</tbody>\
-				</table>\
-				<p id="recommendation"></p>\
-			'
-			eventsList = result[0].get("Meetings").split(",")
-			for(i=0; i<eventsList.length; i++){
-				temp = eventsList[i].split(" | ")
-				$('#dataTable').append(
-					'<tr><td>'
-					+ temp[0]
-					+ '</td><td>'
-					+ temp[1]
-					+ '</td><td>'
-					+ temp[2]
-					+ '</td><td>'
-					+ temp[3]
-					+ '</td><td>'
-					+ temp[4]
-					+ '</td></tr>'
+			if(localStorage.getItem("groups").includes(result[0].get("Name"))){
+				document.getElementById("modal").innerHTML = '\
+					<span\
+						class="close"\
+						onclick="document.getElementById(\'modal\').style.display = \'none\'">\
+						&times;\
+					</span>\
+					<h1>' + result[0].get("Name") + '\
+					</h1>\
+					<br>\
+					<p>' + result[0].get("Description") + '\
+					<br>\
+					<table class="table loadTable">\
+						<thead><tr><th onclick="sortTable(0)">Event</th><th onclick="sortTable(1)">Description</th><th>Date</th><th>Time</th><th>Location</th></tr></thead>\
+						<tbody id="dataTable">\
+						</tbody>\
+					</table>\
+					<p id="recommendation"></p>\
+				'
+				eventsList = result[0].get("Meetings").split(",")
+				for(i=0; i<eventsList.length; i++){
+					temp = eventsList[i].split(" | ")
+					$('#dataTable').append(
+						'<tr><td>'
+						+ temp[0]
+						+ '</td><td>'
+						+ temp[1]
+						+ '</td><td>'
+						+ temp[2]
+						+ '</td><td>'
+						+ temp[3]
+						+ '</td><td>'
+						+ temp[4]
+						+ '</td></tr>'
 			
-				)
+					)
+				}
+				recommend()
+				document.getElementById("modal").style.display = "block"
 			}
-			recommend()
-			document.getElementById("modal").style.display = "block"
+			else{
+				document.getElementById("modal").innerHTML = '\
+					<span\
+						class="close"\
+						onclick="document.getElementById(\'modal\').style.display = \'none\'">\
+						&times;\
+					</span>\
+					<h1>' + result[0].get("Name") + '\
+					</h1>\
+					<br>\
+					<p>' + result[0].get("Description") + '\
+					<br>\
+					<table class="table loadTable">\
+						<thead><tr><th onclick="sortTable(0)">Event</th><th onclick="sortTable(1)">Description</th><th>Date</th><th>Time</th><th>Location</th></tr></thead>\
+						<tbody id="dataTable">\
+						</tbody>\
+					</table>\
+					<input type="submit" value="Join Group" onclick="joinGroup(localStorage.getItem(\'username\'),\'' + result[0].get("Name") + '\')">\
+					<br>\
+					<p id="recommendation"></p>\
+				'
+				eventsList = result[0].get("Meetings").split(",")
+				for(i=0; i<eventsList.length; i++){
+					temp = eventsList[i].split(" | ")
+					$('#dataTable').append(
+						'<tr><td>'
+						+ temp[0]
+						+ '</td><td>'
+						+ temp[1]
+						+ '</td><td>'
+						+ temp[2]
+						+ '</td><td>'
+						+ temp[3]
+						+ '</td><td>'
+						+ temp[4]
+						+ '</td></tr>'
+			
+					)
+				}
+				recommend()
+				document.getElementById("modal").style.display = "block"
+			}
 		}
 	})
 }

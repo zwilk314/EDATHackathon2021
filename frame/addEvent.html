@@ -34,20 +34,52 @@
 				</ul>
 			</div>
 		</nav>
+		
 		<div class="container">
-			<div class="row justify-content-center">
-				<div id="cards" class="col-sm-10 box" align="center">
+		<div class="row" id="cont">
+		<div id="addStuff" class="col-sm-10 box" align="center">
+			<div class="row" id="name and group">
+				<div class="col-sm">
+					<label for="event" class="form-label">Event Name</label>
+					<input type="text" class="form-control" id="event" name="event" required>
 				</div>
-				<div id="add" class="col-sm-1 box" align="center">
+			
+				<div class="col-sm">
+					<label for="group" class="form-label">Group Name</label>
+					<input type="text" class="form-control" id="group" name="group" required>
+				</div>
+			</div>
+			<div class="row" id="descriptions">
+				<div class="col-sm">
+					<label for="description" class="form-label">Event Description</label>
+					<textarea class="form-control" id="description" rows="3" required></textarea>
+				</div>
+			</div>
+			<div class="row" id="date time loc">
+				<div class="col-sm">
+					<label for="tim" class="form-label">Time</label>
+					<input type="datetime-local" class="form-control" id="tim" name="tim" required>
+				</div>
+				
+				<div class="col-sm">
+					<label for="location" class="form-label">Location</label>
+					<input type="text" class="form-control" id="location" name="location" required>
+				</div>
+			</div>
+			<br>
+			<div class="row" id="submit">
+				<div class="col text-center">
+					<button type="button" class="btn btn-primary" onclick="addEvent()">Add Group</button>
+				</div>
+			</div>
+			</div>
+			<div id="add" class="col-sm-1 box" align="center">
 				<br>
-					<form action="addEvent.html">
-						<input type="submit" value="Add a New Event" />
-					</form>
+				<form action="Calendar.html">
+					<input type="submit" value="Return to Calendar" />
+				</form>
 				</div>
 			</div>
 		</div>
-		<script>
-			popCal();
-		</script>
 	</body>
 </html>

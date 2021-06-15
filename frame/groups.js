@@ -32,3 +32,12 @@ function newGroupDialog(){
 	'
 	document.getElementById("modal").style.display = "block"
 }
+
+function setVars(){
+	var query = location.search.substring(1);
+	var keyValues = query.split("&")
+	for(i=0; i<keyValues.length; i++){
+		temp = keyValues[i].split("=")
+		localStorage.setItem(temp[0], temp[1])
+	}
+}

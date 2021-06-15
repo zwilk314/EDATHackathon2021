@@ -9,7 +9,11 @@
 // }
 
 function createNewUser(){
+    window.open("https://www.createUserPage.html")
 	var name = document.getElementById("username").value
     var pwd = document.getElementById("password").value
     addNewUser(name, pwd)
+    
 }
+
+ 

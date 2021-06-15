@@ -52,7 +52,7 @@ function addNewUser(username, password){
 }
 
 //Attempts to login with the provided username and password
-//If successful, the groups list (comma-separated string) will be added to sessionStorage for later use in the application
+//If successful, the groups list (comma-separated string) will be added to localStorage for later use in the application
 function loginUser(username, password){
 	Parse.initialize(applicationID, javascriptKey)
 	Parse.serverURL = serverID
@@ -65,9 +65,9 @@ function loginUser(username, password){
 			return
 		}
 		else{
-			alert("Successful login " + result[0].get("username"))
-			sessionStorage.setItem("username", username)
-			sessionStorage.setItem("groups", result[0].get("Groups"))
+			// alert("Successful login " + result[0].get("username"))
+			localStorage.setItem("username", username)
+			localStorage.setItem("groups", result[0].get("Groups"))
 			window.open("../frame/groups.html", "_self")
 		}
 	})
@@ -147,6 +147,7 @@ function queryGroup(groupName){
 					<tbody id="dataTable">\
 					</tbody>\
 				</table>\
+				<p id="recommendation"></p>\
 			'
 			eventsList = result[0].get("Meetings").split(",")
 			for(i=0; i<eventsList.length; i++){
@@ -166,23 +167,41 @@ function queryGroup(groupName){
 			
 				)
 			}
+			recommend()
 			document.getElementById("modal").style.display = "block"
 		}
 	})
 }
 
-//Finds all meetings (used for autofill purposes, potentially for universal calendar)
-function queryAllGroups(){
+//Finds recommended popular group
+function recommend(){
 	Parse.initialize(applicationID, javascriptKey)
 	Parse.serverURL = serverID
-	var query = new Parse.Query(Parse.Object.extend("GroupInfo"))
+	var query = new Parse.Query(Parse.Object.extend("customUser"))
 	query.find().then(function(results){
-		var autofillLibrary = []
+		var library = {}
+		var namesList = []
 		for(i=0; i<results.length; i++){
-			result = results[i]
-			autofillLibrary.push(result.get("Name"))
-			//sessionStorage.setItem(result.get("Name"), result.get("Meetings"))
+			result = results[i].get("Groups").split(",")
+			for(k=0; k<result.length; k++){
+				if(typeof library[result[k]] == "undefined" && result[k] != ""){
+					library[result[k]] = 1
+					namesList.push(result[k])
+				}
+				else if(result[k] != ""){
+					library[result[k]] += 1
+				}
+			}
 		}
+		maximum = ""
+		maxValue = 0
+		for(j=0; j<namesList.length; j++){
+			if(library[namesList[j]] > maxValue){
+				maximum = namesList[j]
+				maxValue = library[namesList[j]]
+			}
+		}
+		document.getElementById("recommendation").innerHTML = "You might also be interested in joining " + maximum + " - check it out!"
 	})
 }
 

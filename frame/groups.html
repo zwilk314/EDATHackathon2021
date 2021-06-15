@@ -13,6 +13,31 @@
 		<script src="groups.js"></script>
 		<script type='text/javascript' src='https://npmcdn.com/parse@2.1.0/dist/parse.min.js'></script>
 		<script src='database.js'></script>
+		<style>
+      input[type=submit] {
+        background-color: #ae0700;
+        border: none;
+        color: #fff;
+        padding: 10px 24px;
+		transition-duration: 0.4s;
+        text-decoration: none;
+		border-radius: 12px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+	  input[type=submit]:hover {
+  		background-color: #C5C7C4; 
+ 		 color: white;
+		  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+		}
+		input[type=text]{
+			border: none;
+  		border-bottom: 2px solid red;
+		}
+		
+		
+	</style>
+
 	</head>
 	
 	<body>
@@ -42,12 +67,14 @@
 			id="groupSearch"
 			type="text"
 			name="groupSearch"
-			placeholder="Search Groups">
+			placeholder="Search Groups"
+			>
 		<input
 			id="search"
 			type="submit"
 			name="search"
 			value="Search"
+			style= "color: #ffffff;"
 			onclick="queryGroup(document.getElementById('groupSearch').value)">
 		<br>
 		<input

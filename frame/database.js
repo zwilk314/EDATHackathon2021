@@ -21,6 +21,9 @@ var serverID = "https://parseapi.back4app.com"
 // 	})
 // }
 
+var user
+var groups
+
 function addNewUser(username, password){
 	Parse.initialize(applicationID, javascriptKey)
 	Parse.serverURL = serverID
@@ -66,9 +69,9 @@ function loginUser(username, password){
 		}
 		else{
 			// alert("Successful login " + result[0].get("username"))
-			localStorage.setItem("username", username)
-			localStorage.setItem("groups", result[0].get("Groups"))
-			window.open("../frame/groups.html", "_self")
+			user = result[0].get("username")
+			groups = result[0].get("Groups")
+			window.open("../frame/groups.html?username=" + user +"&groups=" + groups, "_self")
 		}
 	})
 }

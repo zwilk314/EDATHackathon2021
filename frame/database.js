@@ -95,17 +95,21 @@ function addNewGroup(username, groupName, groupDescription){
 		if(i == (titles.length - 1)){
 			newEntry.save().then(
 				function(result){
-					alert(result)
 					var query = new Parse.Query(Parse.Object.extend("customUser"))
-					query.equalTo("username", username)
-					query.find().then(result => {
-						var oldList = result.get("Groups")
-						var id = result.get("objectId")
-						nImport = Parse.Object.extend("customUser")
-						newEntry = new nImport()
-						newEntry.get(id).then((result) => {
-							result.set("Groups", oldList + "," + groupName)
-							result.save()
+					query.equalTo("username", username) //TODO: username in session storage!!!
+					query.find().then(function(result2){
+						var oldList = result2[0].get("Groups")
+						var id = result2[0].id
+						nImport2 = Parse.Object.extend("customUser")
+						newEntry2 = new nImport2()
+						newEntry2.set("objectId", id)
+						if(oldList == ""){
+							newEntry2.set("Groups", groupName)
+						}
+						else{
+							newEntry2.set("Groups", oldList + "," + groupName)
+						}
+						newEntry2.save().then(function(result3){
 							alert("Group successfully created")
 						})
 					})
@@ -121,13 +125,13 @@ function queryGroup(groupName){
 	Parse.serverURL = serverID
 	var query = new Parse.Query(Parse.Object.extend("GroupInfo"))
 	query.equalTo("Name", groupName)
-	query.find().then(result => {
+	query.find().then(function(result){
 		if(result.length == 0){
 			alert("Invalid group name")
 			return
 		}
 		else{
-			sessionStorage.setItem("Meetings", result.get("Meetings"))
+			sessionStorage.setItem("Meetings", result[0].get("Meetings"))
 			//NOTE this may need editing to avoid race conditions and scenarios with multiple groups
 		}
 	})
@@ -138,7 +142,7 @@ function queryAllGroups(){
 	Parse.initialize(applicationID, javascriptKey)
 	Parse.serverURL = serverID
 	var query = new Parse.Query(Parse.Object.extend("GroupInfo"))
-	query.find().then(results => {
+	query.find().then(function(results){
 		autofillLibrary = []
 		for(i=0; i<results.length; i++){
 			result = results[i]
@@ -157,19 +161,24 @@ function addNewMeeting(groupName, meetingInfoString){
 	Parse.serverURL = serverID
 	var query = new Parse.Query(Parse.Object.extend("GroupInfo"))
 	query.equalTo("Name", groupName)
-	query.find().then(result => {
+	query.find().then(function(result){
 		if(result.length == 0){
 			alert("Invalid group name")
 			return
 		}
 		else{
-			var oldList = result.get("Meetings")
-			var id = result.get("objectId")
-			var nImport = Parse.Object.extend("customUser")
+			var oldList = result[0].get("Meetings")
+			var id = result[0].id
+			var nImport = Parse.Object.extend("GroupInfo")
 			var newEntry = new nImport()
-			newEntry.get(id).then((result) => {
-				result.set("Meetings", oldList + "," + meetingInfoString)
-				result.save()
+			newEntry.set("objectId", id)
+			if(oldList == ""){
+				newEntry.set("Meetings", meetingInfoString)
+			}
+			else{
+				newEntry.set("Meetings", oldList + "," + meetingInfoString)
+			}
+			newEntry.save().then(function(result2){
 				alert("Meeting successfully created")
 			})
 		}

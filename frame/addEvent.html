@@ -4,6 +4,7 @@
 		<meta charset="utf-8">
 		<title> EDAT Hackathon Frame </title>
 		<!-- Bootstrap CSS -->
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -120,6 +121,16 @@
  		 color: white;
 		  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 		}
+		input[type=text]{
+			border: none;
+  		border-bottom: 2px solid red;
+		}
+		
+		body {
+            font-family: 'Montserrat', sans-serif;
+            background: #C5C7C4;
+        }
+		
 		button {
         background-color: #ae0700;
         border: none;
@@ -136,12 +147,6 @@
  		 color: white;
 		  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 		}
-		input[type=text]{
-			border: none;
-  		border-bottom: 2px solid red;
-		}
-		
-		
 	</style>
 	</head>
 	<body>
@@ -167,7 +172,7 @@
 				</ul>
 			</div>
 		</nav>
-		
+		<br><br>
 		<div class="container">
 		<div class="row" id="cont">
 		<div id="addStuff" class="col-sm-10 box" align="center">
@@ -176,11 +181,15 @@
 					<label for="event" class="form-label">Event Name</label>
 					<input type="text" class="form-control" id="event" name="event" required>
 				</div>
-			
 				<div class="col-sm">
-					<label for="group" class="form-label">Group Name</label>
-					<input type="text" class="form-control" id="group" name="group" required>
+					<label for="groups">Group Name</label>
+					<select class="form-control" id="groups">
+					</select>
+					<script>
+						getNames();
+					</script>
 				</div>
+				
 			</div>
 			<div class="row" id="descriptions">
 				<div class="col-sm">
@@ -202,7 +211,7 @@
 			<br>
 			<div class="row" id="submit">
 				<div class="col text-center">
-					<button type="button" onclick="addEvent()">Add Group</button>
+					<button type="button" onclick="addEvent()">Add Event</button>
 				</div>
 			</div>
 			</div>

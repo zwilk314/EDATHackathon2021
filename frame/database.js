@@ -389,3 +389,20 @@ function addEvent() {
 		addNewMeeting(groupName, eventString)
 	}
 }
+
+//Carson function to get group names
+function getNames() {
+	Parse.initialize(applicationID, javascriptKey)
+	Parse.serverURL = serverID
+	var query = new Parse.Query(Parse.Object.extend("GroupInfo"))
+	var events = new Object();
+	query.find().then(function(results){
+		for(i=0; i<results.length; i++){
+			result = results[i]
+			events[i] = result.get("Name");
+			let opt = document.createElement("option");
+			opt.text = events[i];
+			document.getElementById("groups").add(opt);
+		}
+	})
+}

@@ -359,7 +359,8 @@ function popCal(){
 function addEvent() {
 	var eventName = $("input#event").val();
 	var eventDesc = $("textarea#description").val();
-	var groupName = $("input#group").val();
+	const sb = document.querySelector('#groups')
+	var groupName = sb.value;
 	var time = Date.parse($("input#tim").val());
 	var date = new Date(time);
 	var loc = $("input#location").val();
@@ -381,7 +382,7 @@ function addEvent() {
 
 	var dat = year + "/" + month + "/" + day;
 	var tim = hours + ':' + minutes + ' ' + newformat;
-	
+
 	if (eventName == "" || eventDesc == "" || groupName == "" || dat == "" || tim == "" || loc == "") {
 		alert("One or more fields are blank");
 	} else {
@@ -402,6 +403,7 @@ function getNames() {
 			events[i] = result.get("Name");
 			let opt = document.createElement("option");
 			opt.text = events[i];
+			opt.value = events[i];
 			document.getElementById("groups").add(opt);
 		}
 	})

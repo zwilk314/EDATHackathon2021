@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title> About Us </title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type='text/javascript' src='https://npmcdn.com/parse@2.1.0/dist/parse.min.js'></script>
+    <script src='database.js'></script>
+    <style>
+        button {
+            background-color: #ae0700;
+            border: none;
+            color: #fff;
+            padding: 10px 24px;
+            transition-duration: 0.4s;
+            text-decoration: none;
+            border-radius: 12px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #C5C7C4;
+            color: white;
+            box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+        }
+        
+        body {
+            margin: auto;
+            height: 100%;
+        }
+        
+        .content {
+            align-items: center;
+        }
+        
+        .element {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%);
+            background-color: #ae0700;
+            color: white;
+            margin: auto;
+            padding: 20px;
+        }
+        
+        hr {
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #ae0700;">
+        <a class="navbar-brand" style="color: #ffffff;" href="#">Lilly Groups </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #ffffff;" href="groups.html"> Groups </a>
+                </li>
+
+                <li class="nav-item active">
+                    <a class="nav-link" style="color: #ffffff;" href="Calendar.html"> Calendar <span class="sr-only">(current)</span></a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #ffffff;" href="About.html"> About </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" style="color: #ffffff;" href="../login/login.html"> Logout </a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <div class="content">
+        <div class="element">
+            <h1>About Us</h1>
+            <hr>
+            <p>
+                Groups is a website developed for the EDAT HAckathon by Team 4. Its purpose is to serve as a system for Lilly Clubs to track their events. It includes a calendar to track events, the ability to create events, and AI feature to recomend events.
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>
